@@ -1,0 +1,27 @@
+
+img{
+    width: 192px;
+    height: 46px;
+    float: left;
+    display: inline-block;
+    line-height: 1;
+}
+#logout{
+    float: right;
+    display: inline-block;
+    line-height: 1;
+    margin-top: 12px;
+    color:  #0060B3;
+    font-size: 20px;
+    margin-right: 8px;
+}
+#back{
+    float: right;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: central;
+    
+}
+input,select{
+    text-align: center;
+}

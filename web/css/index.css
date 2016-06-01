@@ -1,0 +1,37 @@
+img{
+    width: 192px;
+    height: 60px;
+    float: left;
+    display: inline-block;
+    line-height: 1;
+}
+body{
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-color: transparent;
+}
+.main{
+    margin-left: 37%;
+    margin-right: 37%;
+
+}
+#txt{
+    color: #ffffff;
+    margin-top: 14px;
+    float: right;
+    margin-right: 7px;
+    font-size: 22px;
+
+}
+p{
+    color: #ffffff;
+    font-size: 18px;
+    text-align: center;
+}
+#hi_img{
+    width: 135px;
+    height: 120px;
+    float: left;
+}
+
