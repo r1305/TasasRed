@@ -10,7 +10,6 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=5" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="Refresh" content="10">
         <title>Formulario</title>
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
         <script src="js/jquery.min.js" type="text/javascript"></script>
@@ -40,6 +39,7 @@
                 var y = screen.height / 2 - 450 / 2;
                 window.open('actualizar.jsp?cod=' + id, '_blank', 'width = 400, height = 350,left=' + x + ',top=' + y);
             }
+
         </script>
     </head>
     <body>
@@ -128,19 +128,19 @@
                             <table class="table" border="1">
                                 <thead class="filters">
                                     <tr>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="10%">
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="10%">
                                             <b>Fecha de Aprobación</b>
                                         </th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>DNI</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="10%"><b>Monto Solicitado</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Moneda</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Plazo</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="10%"><b>Producto</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Tasa Aprobada</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Tasa Solicitada</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Vigencia(Dias)</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Motivo</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" ><b>Actualización de Tasa</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>DNI</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="10%"><b>Monto Solicitado</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>Moneda</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>Plazo</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="10%"><b>Producto</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>Tasa Aprobada</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>Tasa Solicitada</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>Vigencia(Dias)</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>Motivo</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" ><b>Actualización de Tasa</b></th>
                                     </tr>
                                 </thead>
                             </table>

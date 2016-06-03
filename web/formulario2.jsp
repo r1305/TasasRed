@@ -9,7 +9,6 @@
 <html>
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=5" />
-        <meta http-equiv="Refresh" content="10">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Formulario</title>
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
@@ -40,6 +39,7 @@
                 var y = screen.height / 2 - 450 / 2;
                 window.open('reenvio.jsp?cod=' + id, '_blank', 'width = 400, height = 350,left=' + x + ',top=' + y);
             }
+
         </script>
     </head>
     <body>
@@ -129,18 +129,18 @@
                                 <thead>
                                     <tr>
 
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="10%">
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="10%">
                                             <b>Fecha de Aprobación</b>
                                         </th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>DNI</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="10%"><b>Monto Solicitado</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Moneda</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Plazo</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="10%"><b>Producto</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Tasa Aprobada</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Vigencia (dias)</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="14%"><b>Motivo</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" ><b>Reenvio</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>DNI</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="10%"><b>Monto Solicitado</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>Moneda</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>Plazo</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="10%"><b>Producto</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>Tasa Aprobada</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>Vigencia (dias)</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="14%"><b>Motivo</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" ><b>Reenvio</b></th>
                                     </tr>
                                 </thead>
                             </table>

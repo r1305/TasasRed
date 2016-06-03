@@ -81,41 +81,43 @@
     <br>
     <!-- Recorrido para mostrar los datos de la solicitud -->
     <c:forEach var="row" items="${result.rows}">
-        <center><div class="panel panel-default" style="width: 35%;height: 63%;margin-top: 1px">
+        <center><div class="panel panel-default" style="width: 30%;height: 63%;margin-top: 1px">
 
 
                 <table style="width: 98%"align='center'>
                     <tbody>
 
-                        <tr>
-                            <td align='center' style="background-color: #00A94E;color: #ffffff" colspan="2">
-                                <button id="back" type="button" onclick="location.href = 'formulario.jsp'"class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-arrow-left"></span> Atrás
-                                </button>
-                                <b style="margin-left: -80px">Solicitud de TASA</b>
+                        <tr align='center' style="background-color: #00A94E;color: #ffffff;text-align: center;vertical-align: central">
+                            <td align='center' style="background-color: #00A94E;color: #ffffff;text-align: center;vertical-align: central" colspan="2">                                
+                                <b style="text-align: center;vertical-align: central">Solicitud de TASA</b>
+                            </td>
+                            <td align='center' style="background-color: #00A94E;color: #ffffff;text-align: center;vertical-align: central" colspan="2">
+                                <input type="button" id="back" type="button" onclick="location.href = 'formulario.jsp'" class="btn btn-default btn-sm" value="Atrás">
                             </td>
                         </tr>
                         <tr>
                             <td><br>Nombre Cliente</td>
-                            <td>
+                            
+                            <td colspan="2">
                                 <br><input type="text" id="cli" style="text-align: center" readonly="true" class="form-control" value="${row.Nombre_Cliente}">
                             </td>
+                            
                         </tr>
                         <tr>
                             <td>DNI</td>
-                            <td>
+                            <td colspan="2">
                                 <input type="text" id="dni" style="text-align: center" readonly="true" class="form-control" value="${row.Cod_doc}">
                             </td>
                         </tr>
                         <tr>
                             <td>Producto</td>
-                            <td>
+                            <td colspan="2">
                                 <input type="text" id="prod" style="text-align: center" readonly="true" class="form-control" value="${row.Producto_origen}">
                             </td>
                         </tr>
                         <tr>
                             <td>Moneda</td>
-                            <td>
+                            <td colspan="2">
                                 <input type="text" id="moneda" style="text-align: center" readonly="true" class="form-control" value="${row.Moneda}">
                             </td>
                         </tr>
@@ -123,7 +125,7 @@
                             <td>
                                 Monto 
                             </td>
-                            <td>
+                            <td colspan="2">
                                 <input type="text" id="c" style=" text-align: center" class="form-control" value="${row.prestamo}" readonly="true" >
                             </td>
                         </tr>
@@ -131,7 +133,7 @@
                             <td>
                                 Tasa ADQ (%)
                             </td>
-                            <td>
+                            <td colspan="2">
                                 <input type="text"  name="tasa" readonly="true" class="form-control" value="${row.Tasa_ADQ}">
                             </td>
                         </tr>
@@ -139,7 +141,7 @@
                             <td>
                                 Tasa Solicitada (%)
                             </td>
-                            <td>
+                            <td colspan="2">
                                 <input type="text" readonly="" class="form-control" value="${row.Tasa_Solicitada}">
                             </td>
                         </tr>  
@@ -147,7 +149,7 @@
                             <td>
                                 <br>Prima de Riesgo (%)
                             </td>
-                            <td>
+                            <td colspan="2">
                                 <br><input type="text" id="pr" readonly="true" class="form-control" value="${row.Prima_riesgo}">
                             </td>
                         </tr> 
@@ -155,7 +157,7 @@
                             <td>
                                 Costo de Fondos (%)
                             </td>
-                            <td>
+                            <td colspan="2">
                                 <input type="text" id="cof" readonly="true" class="form-control" value="${row.CoF}">
                             </td>
                         </tr> 
@@ -163,7 +165,7 @@
                             <td>
                                 Prima por Monto (%)
                             </td>
-                            <td>
+                            <td colspan="2">
                                 <input type="text" id="prim" readonly="true" class="form-control" value="${row.Prima_monto}" >
                             </td>
                         </tr> 
@@ -171,7 +173,7 @@
                             <td>
                                 Tasa Aprobada (%)
                             </td>
-                            <td>
+                            <td colspan="2">
                                 <input type="text" id="tasa" readonly="true" class="form-control" value="${row.Tasa_aceptada}" >
                             </td>
                         </tr> 
@@ -179,7 +181,7 @@
                             <td>
                                 Plazo (meses)
                             </td>
-                            <td>
+                            <td colspan="2">
                                 <input type="text" id="plazo" name="plazo" class="form-control" value="${row.Plazo}" readonly="">
                             </td>
                         </tr>
@@ -188,17 +190,12 @@
                         </tr>
                         <tr>
                             <td style="vertical-align:middle;font-size: 14px" class="control-label">Comentario Ejecutivo</td>
-                            <td><textarea readonly="" type="text" rows="5"  class="form-control" >${row.ComentF}</textarea></td>
+                            <td colspan="2"><textarea readonly="" type="text" rows="5"  class="form-control" >${row.ComentF}</textarea></td>
                         </tr>
                         <tr>
                             <td style="vertical-align:middle;font-size: 14px" class="control-label">Comentario Evaluador</td>
-                            <td><textarea readonly="" type="text" rows="5"  class="form-control" >${row.Comentarios}</textarea></td>
+                            <td colspan="2"><textarea readonly="" type="text" rows="5"  class="form-control" >${row.Comentarios}</textarea></td>
                         </tr>
-                    </tbody>
-                </table>
-                <table>
-                    <tbody>
-
                     </tbody>
                 </table>
             </div>

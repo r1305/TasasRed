@@ -84,17 +84,16 @@
         <div class="panel panel-default" style="width: 30%;height: 60%;margin-top: 20px"> 
             <!--con el c:forEach hacemos el recorrido de todas las filas que devuelve el query-->
             <c:forEach var="row" items="${result.rows}">
-                <table align='center' style="width: 98%">
-                    <thead>
-                        <!--<th style="background-color: #00A94E;color: #ffffff;text-align: center;vertical-align:middle;" colspan="2">-->
-                        <!--hipervinculo para volver a la bandeja de solicitudes-->
-                    <th style="background-color: #00A94E;text-align: center;vertical-align:middle;margin-top: -25px" colspan="2">
-                        <b style="color: #ffffff;">Detalle de Solicitud</b>
-                        <input id="back" style="margin-top: -5px;margin-bottom: 5px" type="button" onclick="location.href = 'formulario.jsp'" class="btn btn-default" value="Atrás">
-
-                    </th>
-                    </thead>
+                <table align='center' style="width: 98%">                    
                     <tbody>
+                        <tr align='center' style="background-color: #00A94E;color: #ffffff;text-align: center;vertical-align: central">
+                            <td align='center' style="background-color: #00A94E;color: #ffffff;text-align: center;vertical-align: central">                                
+                                <b style="text-align: center;vertical-align: central">Solicitud de TASA</b>
+                            </td>
+                            <td align='center' style="background-color: #00A94E;color: #ffffff;text-align: center;vertical-align: central">
+                                <input type="button" id="back" type="button" onclick="location.href = 'formulario.jsp'" class="btn btn-default btn-sm" value="Atrás">
+                            </td>
+                        </tr>
                         <!--a partir de aquí se muestra el detalle de la solictud según el ID-->
                         <tr>
                             <td style="vertical-align:middle;font-size: 14px"><br>Nombre</td>

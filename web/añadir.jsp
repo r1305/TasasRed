@@ -18,8 +18,8 @@
             <div class="modal-dialog modal-sm"> 
                 <!-- Modal content-->
                 <div class="modal-content">
-                    <div class="modal-header" style="background-color: #00A94E">
-                        <center><h4 class="modal-title">Añadir Archivo</h4></center>
+                    <div class="modal-header" style="background-color: #00A94E;color: #FFFFFF">
+                        <center><h4 class="modal-title"><b>Añadir Archivo</b></h4></center>
                     </div>
                     <div class="modal-body">
                         <form action="Imagen" method="post" enctype="multipart/form-data">

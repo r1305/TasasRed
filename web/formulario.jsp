@@ -9,7 +9,6 @@
 <html>
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=5" />
-        <meta http-equiv="Refresh" content="10">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Formulario</title>
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
@@ -35,12 +34,13 @@
                 }
             %>
 
-            function popup()
+            function popup(id)
             {
                 var x = screen.width / 2 - 700 / 2;
                 var y = screen.height / 2 - 450 / 2;
-                window.open('añadir.jsp?cod=${row.Id}', '_blank', 'width = 300, height = 250,left=' + x + ',top=' + y);
+                window.open('añadir.jsp?cod=' + id, '_blank', 'width = 300, height = 250,left=' + x + ',top=' + y);
             }
+
         </script>
     </head>
     <body>
@@ -110,6 +110,11 @@
             <br>
             <!--Tabs de bandeja de solicitudes-->
             <div class="container" style="margin-top: -20px;max-height: 600px;width: 100%">
+                <div class="input-group">
+                    <span class="input-group-addon" onclick="location.reload();" style="background-color: #FACC2E;color: #000000;font-style: inherit">
+                        Actualizar
+                    </span>
+                </div>
                 <center>
                     <table width="101%" border="1">
                         <tr style="background-color: #00A94E;height: 50px">
@@ -129,18 +134,18 @@
                             <table class="table" border="1" id="t1" name="t1">
                                 <thead>
                                     <tr>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="10%">
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="10%">
                                             <b>Fecha de Solicitud</b>
                                         </th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>DNI</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="10%"><b>Monto Solicitado</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Moneda</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Plazo</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="10%"><b>Producto</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Tasa ADQ</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Tasa Solicitada</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="14%"><b>Motivo</b></th>
-                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" ><b>Adjunto</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>DNI</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="10%"><b>Monto Solicitado</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>Moneda</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>Plazo</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="10%"><b>Producto</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>Tasa ADQ</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="8%"><b>Tasa Solicitada</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" width="14%"><b>Motivo</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;color: #00A94E" align="center" ><b>Adjunto</b></th>
                                     </tr>
                                 </thead>
                             </table>

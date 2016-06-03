@@ -48,15 +48,13 @@ public class Imagen extends HttpServlet {
             writer = response.getWriter();            
             writer.println("<center style=\"margin-top: 140px \">Debe seleccionar un archivo");
             writer.println("<br><a href='#' onclick='window.close()'>Cerrar</a></center>");
-
         }
-
     }
 
     private String getFileName(final Part part) {
         String ruta = "";
         final String partHeader = part.getHeader("content-disposition");
-        for (String content : part.getHeader("content-disposition").split(";")) {
+        for (String content : partHeader.split(";")) {
             if (content.trim().startsWith("filename")) {
                 ruta = content.substring(
                         content.indexOf('=') + 1).trim().replace("\"", "");
