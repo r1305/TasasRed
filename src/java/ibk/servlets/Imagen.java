@@ -42,11 +42,12 @@ public class Imagen extends HttpServlet {
         if (file.getSize() > 0) {
             con.insertFiles(writeFile(file), id);
             writer = response.getWriter();
-            writer.println("<center>Archivo insertado correctamente");
+            writer.println("<center style=\"margin-top: 140px \">Archivo insertado correctamente");
             writer.println("<br><a href='#' onclick='window.close()'>Cerrar</a></center>");
         } else {
             writer = response.getWriter();            
-            writer.println("Debe seleccionar un archivo");
+            writer.println("<center style=\"margin-top: 140px \">Debe seleccionar un archivo");
+            writer.println("<br><a href='#' onclick='window.close()'>Cerrar</a></center>");
 
         }
 

@@ -61,7 +61,7 @@
         <%Conexion c = new Conexion();
             String user = nombre;%>
     <center>
-        <div class="main" role="main" style="width: 100%">
+        <div class="main" role="main" style="width: 100%" >
             <div class="header" style="width: 60%">
                 <img src="img/Logo Ibk_verde_sinfondo.png" alt=""/>
                 <!-- cerrar sesión del usuario logeado -->

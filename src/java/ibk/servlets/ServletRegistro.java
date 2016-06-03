@@ -38,11 +38,11 @@ public class ServletRegistro extends HttpServlet {
         
         if(ok){
             writer = response.getWriter();
-            writer.println("<center>Cambio de contraseña correcta");
+            writer.println("<center style=\"margin-top: 140px \">Cambio de contraseña correcta");
             writer.println("<br><a href='#' onclick='window.close()'>Cerrar</a></center>");
         }else{
             writer = response.getWriter();
-            writer.println("<center>¡Hubo un error al registrar su nueva contraseña!");
+            writer.println("<center style=\"margin-top: 140px \">¡Hubo un error al registrar su nueva contraseña!");
             writer.println("<br><a href='contraseña.jsp'>Regresar</a></center>");
         }
 

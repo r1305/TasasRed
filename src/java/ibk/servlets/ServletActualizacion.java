@@ -48,26 +48,18 @@ public class ServletActualizacion extends HttpServlet {
         int cont = con.getContador(i);
         System.out.println(cont);
 
-        if (cont == 1) {
-            ok = con.actualización(i, tasa, c);
+        ok = con.actualización(i, tasa, c);
             if (ruta.getSize() > 0) {
                 okI = con.insertFiles(writeFile(ruta), id);
             }
             if (ok) {
-                response.sendRedirect("formulario.jsp");
-            } else {
                 writer = response.getWriter();
-                writer.println("Error al registrar su solicitud");
-            }
-        } else {
-            writer = response.getWriter();
-            writer = response.getWriter();
                 writer.println(""
-                        + "<center><div class=\"panel panel-default\" style=\"width: 480px;height: 280px\">               "
+                        + "<center style='margin-top:55px'><div class=\"panel panel-default\" style=\"width: 350px;height: 100px\">"
                         + "<table role=\"table\" border='1' align=\"center\" style=\"height: 100%;width: 100%\">"
                         + "                    <!-- cabecera de login-->\n"
                         + "                    <thead>\n"
-                        + "                    <th colspan=\"3\" style='background-color: #00A94E;heig:150px'>"
+                        + "                    <th colspan=\"3\" style='background-color: #00A94E;height:60px'>"
                         + "                        <img src=\"img/Logo IBK verde.jpg\" alt=\"\" style='width: 192px;\n" +
                                                     "    height: 60px;\n" +
                                                     "    line-height: 1;'/>"
@@ -75,15 +67,38 @@ public class ServletActualizacion extends HttpServlet {
                         + "                    </thead>"
                         + "                    <tbody>"
                         + "                        <tr>"
-                        + "                            <td style='text-align:center;font-size:22px'>"
-                        + "                                 <b>Ocurrió un error al registrar su solicitud"
-                        + "                                 <br>Para regresar haga click <a href='formulario.jsp'>aquí</a><b>"
+                        + "                            <td style='text-align:center;font-size:22px;height:150px'>"
+                        + "                                 <b>¡Solicitud registrada con éxito!"
+                        + "                                 <br><a href='#' onclick='window.close()'>Cerrar</a><b>"
                         + "                            </td>"
                         + "                        </tr>\n"
                         + "                    </tbody>\n"
                         + "                </table>"
                         + "</div></center>");
-        }
+            } else {
+                writer = response.getWriter();
+                writer.println(""
+                        + "<center style='margin-top:55px'><div class=\"panel panel-default\" style=\"width: 350px;height: 100px\">"
+                        + "<table role=\"table\" border='1' align=\"center\" style=\"height: 100%;width: 100%\">"
+                        + "                    <!-- cabecera de login-->\n"
+                        + "                    <thead>\n"
+                        + "                    <th colspan=\"3\" style='background-color: #00A94E;height:60px'>"
+                        + "                        <img src=\"img/Logo IBK verde.jpg\" alt=\"\" style='width: 192px;\n" +
+                                                    "    height: 60px;\n" +
+                                                    "    line-height: 1;'/>"
+                        + "                    </th>"
+                        + "                    </thead>"
+                        + "                    <tbody>"
+                        + "                        <tr>"
+                        + "                            <td style='text-align:center;font-size:22px;height:150px'>"
+                        + "                                 <b>Ocurrió un error al registrar su solicitud"
+                        + "                                 <br><a href='#' onclick='window.close()'>Cerrar</a><b>"
+                        + "                            </td>"
+                        + "                        </tr>\n"
+                        + "                    </tbody>\n"
+                        + "                </table>"
+                        + "</div></center>");
+            }
 
     }
 

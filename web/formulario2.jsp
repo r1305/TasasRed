@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=5" />
+        <meta http-equiv="Refresh" content="10">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Formulario</title>
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
@@ -54,11 +55,11 @@
         </sql:query>
         <!-- query para obtener la cantidad de solicitudes aceptadas del usuario logeado-->
         <sql:query dataSource="${snapshot}" var="a">
-            select COUNT(*) as numero from Phoenix.Formulario where Estado='Aceptada' and [Usuario]='<%=user%>'
+            select COUNT(*) as numero from Phoenix.Formulario where Estado='Aceptada' and [Usuario]='<%=user%>' and dias>=0
         </sql:query>
         <!-- query para obtener la cantidad de solicitudes rechazadas del usuario logeado-->
         <sql:query dataSource="${snapshot}" var="r">
-            select COUNT(*) as numero from Phoenix.Formulario where Estado='ContraOferta' and  [Usuario]='<%=user%>'
+            select COUNT(*) as numero from Phoenix.Formulario where Estado='ContraOferta' and  [Usuario]='<%=user%>' and dias>=0
         </sql:query>
         <!-- query para obtener la cantidad de solicitudes vencidas del usuario logeado-->
         <sql:query dataSource="${snapshot}" var="v">
@@ -109,16 +110,16 @@
             <!--Tabs de bandeja de solicitudes-->
             <div class="container" style="margin-top: -20px;max-height: 600px;width: 100%">
                 <center>
-                    <table width="101%">
+                    <table width="101%" border="1">
                         <tr style="background-color: #00A94E;height: 50px">
-                            <th style="text-align: center;vertical-align:middle;"><a href="formulario.jsp" style="color: #FFFFFF"><b>Enviadas (<c:forEach var="b" items="${n.rows}">${b.numero}</c:forEach>)</b></a></th>
-                            <th style=";background-color:#009042 ;text-align: center;vertical-align:middle;"><a  href="formulario2.jsp" style="color: #FFFFFF"><b>Aceptadas (<c:forEach var="b" items="${a.rows}">${b.numero}</c:forEach>)</b></a></th>
-                            <th style="text-align: center;vertical-align:middle;"><a  href="formulario3.jsp" style="color: #FFFFFF"><b>Contra Ofertas (<c:forEach var="b" items="${r.rows}">${b.numero}</c:forEach>)</b></a></th>
-                            <th style="text-align: center;vertical-align:middle;"><a  href="formulario4.jsp" style="color: #FFFFFF"><b>Vencidas (<c:forEach var="b" items="${v.rows}">${b.numero}</c:forEach>)</b></a></th>
-                            <th style="text-align: center;vertical-align:middle;"><a  href="formulario5.jsp" style="color: #FFFFFF"><b>Solicitud</b></a></th>                               
-                        </tr>
-                    </table>
-                </center>
+                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a href="formulario.jsp" style="color: #FFFFFF"><b>Enviadas (<c:forEach var="b" items="${n.rows}">${b.numero}</c:forEach>)</b></a></th>
+                            <th style=";background-color:#009042 ;text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario2.jsp" style="color: #FFFFFF"><b>Aceptadas (<c:forEach var="b" items="${a.rows}">${b.numero}</c:forEach>)</b></a></th>
+                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario3.jsp" style="color: #FFFFFF"><b>Contra Ofertas (<c:forEach var="b" items="${r.rows}">${b.numero}</c:forEach>)</b></a></th>
+                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario4.jsp" style="color: #FFFFFF"><b>Vencidas (<c:forEach var="b" items="${v.rows}">${b.numero}</c:forEach>)</b></a></th>
+                                <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario5.jsp" style="color: #FFFFFF"><b>Solicitud</b></a></th>                               
+                            </tr>
+                        </table>
+                    </center>
                 </div>
                 <div class="tab-content" style="margin-top: -15px;">
                     <!--Tab de solicitudes aceptadas-->
@@ -128,18 +129,18 @@
                                 <thead>
                                     <tr>
 
-                                        <th style=";font-size: 16px;text-align: center;vertical-align:middle;" align="center" width="10%">
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="10%">
                                             <b>Fecha de Aprobación</b>
                                         </th>
-                                        <th style=";font-size: 16px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>DNI</b></th>
-                                        <th style=";font-size: 16px;text-align: center;vertical-align:middle;" align="center" width="10%"><b>Monto Solicitado</b></th>
-                                        <th style=";font-size: 16px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Moneda</b></th>
-                                        <th style=";font-size: 16px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Plazo</b></th>
-                                        <th style=";font-size: 16px;text-align: center;vertical-align:middle;" align="center" width="10%"><b>Producto</b></th>
-                                        <th style=";font-size: 16px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Tasa Aprobada</b></th>
-                                        <th style=";font-size: 16px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Vigencia (dias)</b></th>
-                                        <th style=";font-size: 16px;text-align: center;vertical-align:middle;" align="center" width="14%"><b>Motivo</b></th>
-                                        <th style=";font-size: 16px;text-align: center;vertical-align:middle;" align="center" ><b>Reenvio</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>DNI</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="10%"><b>Monto Solicitado</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Moneda</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Plazo</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="10%"><b>Producto</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Tasa Aprobada</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="8%"><b>Vigencia (dias)</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" width="14%"><b>Motivo</b></th>
+                                        <th style=";font-size: 14px;text-align: center;vertical-align:middle;" align="center" ><b>Reenvio</b></th>
                                     </tr>
                                 </thead>
                             </table>
@@ -172,8 +173,9 @@
                                             </c:choose>
                                         </td> 
                                         <td style=";font-size: 12px;text-align: center;vertical-align:middle;" align="center" width="14%">${row.Motivo}</td>
-                                        <td style=";font-size: 12px;text-align: center;vertical-align:middle;" align="center" >
-                                            <a href="#" onclick="popup(${row.Id});">Reenvio</a>
+                                        <td style="text-align: -webkit-center;vertical-align: middle" align="center">                                            
+                                            <!--<a href="#"><img src="img/actualizacion.PNG" onclick="popup(${row.Id});" style="width: 25px;height: 25px;float: inside"></a>-->
+                                            <input type="button" onclick="popup(${row.Id})" value="Reenviar" style="background-color: #00A94E;color: #ffffff;font-style: inherit">
                                         </td>
                                     </tr>
                                 </c:forEach>

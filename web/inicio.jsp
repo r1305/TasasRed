@@ -9,7 +9,7 @@
 <html>
     <head>
         <title>Calculadora de Tasas</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=10" />
+        <meta http-equiv="X-UA-Compatible" content="IE=5" />
         <meta charset="utf-8">
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
         <script src="js/jquery.min.js" type="text/javascript"></script>

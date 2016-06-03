@@ -84,7 +84,7 @@
         <center><div class="panel panel-default" style="width: 35%;height: 63%;margin-top: 1px">
 
 
-                <table style="width: 95%"align='center'>
+                <table style="width: 98%"align='center'>
                     <tbody>
 
                         <tr>

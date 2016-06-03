@@ -103,17 +103,16 @@ function topt() {
 
 //Descarga los archivos de la BD en la ruta especificada
 function descargar(id) {
-    $.post('ServletDescargas', {
-        cod: id
-
-    }, function (responseText) {
-        if (responseText !== "no hay nada") {
-            alert("¡Archivos Completamente Descargados!");
-            alert("Los archivos se encuentran en: \n" + responseText);
-        } else if (responseText === "no hay nada") {
-            alert("¡No se pudo descargar los archivos!");
+    var xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState===4){
+            var data=xhr.responseText;
+            alert("¡Descarga correcta!")
+            alert("El archivo se encuentra en: "+data);
         }
-    });
+    }
+    xhr.open("POST","ServletDescargas?cod="+id,true);
+    xhr.send();
 }
 
 //deshabilita la tecla F12 y el menú para ver el código fuente
