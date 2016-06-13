@@ -36,8 +36,8 @@ public class Conexion {
         }
         return conn;
     }
-    
-    public String vencidas(int cod){
+
+    public String vencidas(int cod) {
         String ok = "";
         Connection conn = getConnection();
         String query;
@@ -48,9 +48,9 @@ public class Conexion {
             ResultSet rs = state.executeQuery(query);
 
             while (rs.next()) {
-                System.out.println(rs.getInt("dias")<0);
-                if(rs.getInt("dias")<0){
-                    ok="ok";
+                System.out.println(rs.getInt("dias") < 0);
+                if (rs.getInt("dias") < 0) {
+                    ok = "ok";
                 }
             }
         } catch (Exception e) {
@@ -59,35 +59,35 @@ public class Conexion {
         }
         return ok;
     }
-    
+
     public String getNombre(String registro) {
         String nombre = "";
-        String nombref="";
+        String nombref = "";
         String query;
         try {
 
             Connection conn = getConnection();
-            Statement statement = conn.createStatement();           
-                query = "SELECT Nombre_colaborador FROM [BD_CHIP].[Phoenix].[Usuarios] where [Registro]='" + registro + "'";
-            
+            Statement statement = conn.createStatement();
+            query = "SELECT Nombre_colaborador FROM [BD_CHIP].[Phoenix].[Usuarios] where [Registro]='" + registro + "'";
+
             ResultSet rs = statement.executeQuery(query);
 
             while (rs.next()) {
                 nombre = rs.getString(1);
             }
-            String[] n=nombre.split(" ");
-            
-            String nom="";
-            String ap="";
-            for(int i=1;i<n[2].length();i++){
-                nom+=String.valueOf(n[2].toLowerCase().charAt(i));
+            String[] n = nombre.split(" ");
+
+            String nom = "";
+            String ap = "";
+            for (int i = 1; i < n[2].length(); i++) {
+                nom += String.valueOf(n[2].toLowerCase().charAt(i));
             }
-            nombref+=n[2].charAt(0)+nom;
-            for(int i=1;i<n[0].length();i++){
-                 ap+=String.valueOf(n[0].toLowerCase().charAt(i));
+            nombref += n[2].charAt(0) + nom;
+            for (int i = 1; i < n[0].length(); i++) {
+                ap += String.valueOf(n[0].toLowerCase().charAt(i));
             }
-            nombref+=" "+n[0].charAt(0)+ap;
-            
+            nombref += " " + n[0].charAt(0) + ap;
+
             rs.close();
             conn.close();
             statement.close();
@@ -122,7 +122,7 @@ public class Conexion {
         }
         return ok;
     }
-    
+
     public boolean enviarMailABP(int cod) {
         Connection con = null;
         CallableStatement proc = null;
@@ -146,7 +146,7 @@ public class Conexion {
         }
         return ok;
     }
-    
+
     public boolean enviarMailRechazados(int cod) {
         Connection con = null;
         CallableStatement proc = null;
@@ -170,7 +170,7 @@ public class Conexion {
         }
         return ok;
     }
-    
+
     public boolean enviarMailRechazadosABP(int cod) {
         Connection con = null;
         CallableStatement proc = null;
@@ -524,8 +524,11 @@ public class Conexion {
                                 ok = "gerente";
                             } else if (rs.getString("Perfil").equalsIgnoreCase("Solicitante FFVV")) {
                                 ok = "ffvv";
+                            } else if (rs.getString("Perfil").equalsIgnoreCase("GT")) {
+                                ok = "gt";
                             } else if (rs.getString("Perfil").equalsIgnoreCase("Evaluador ABP")) {
                                 ok = "abp";
+
                             } else {
                                 ok = "red";
                             }
@@ -675,35 +678,34 @@ public class Conexion {
         }
         return ok;
     }
+
     public boolean actualización(String id, String tasa, String coment) {
 
         boolean ok;
-        int cont=getContador(id);
-        if(cont==1){
-            cont=cont+2;
-        }else{
-            cont=cont+1;
+        int cont = getContador(id);
+        if (cont == 1) {
+            cont = cont + 2;
+        } else {
+            cont = cont + 1;
         }
-        System.out.println("actualizacion cont: "+cont);
+        System.out.println("actualizacion cont: " + cont);
         try {
 
             Connection conn = getConnection();
-            
-            
+
             String query = "update [BD_CHIP].[Phoenix].[Formulario] set Estado='Pendiente',"
                     + "Tasa_solicitada=" + Float.parseFloat(tasa) + ","
                     + "comentF='" + coment + "',Fecha_solicitud=getdate(),Fecha_Vencimiento=Null"
-                    + ",cont="+cont+" where Id=" + id;
+                    + ",cont=" + cont + " where Id=" + id;
             Statement st = conn.createStatement();
             PreparedStatement pst = conn.prepareStatement(query);
 
             pst.executeUpdate();
             updateVencimiento();
             ok = true;
-            conn.close();            
+            conn.close();
             pst.close();
             st.close();
-
 
         } catch (SQLException ex) {
             ok = false;
@@ -711,12 +713,11 @@ public class Conexion {
         }
         return ok;
     }
-    
 
     /**
      * solicitudes de RED *
      */
-    public boolean registroSolicitud2Files(String nombre, String r1, String r2, String dni, String prestamo, String cuotaI, String adq, String plazo, String tasaSol, String valorI, String moneda, String prod, String medio, String mes, String tipo, String vivienda, String motivo, String segmento, String cruce, String user, String coment,String prod_origen) {
+    public boolean registroSolicitud2Files(String nombre, String r1, String r2, String dni, String prestamo, String cuotaI, String adq, String plazo, String tasaSol, String valorI, String moneda, String prod, String medio, String mes, String tipo, String vivienda, String motivo, String segmento, String cruce, String user, String coment, String prod_origen) {
 
         boolean ok = false;
         int len1;
@@ -776,7 +777,7 @@ public class Conexion {
                     + ",getdate()"
                     + ",'" + coment + "'"
                     + ",1"
-                    + ",?,?,?,?,'"+prod_origen+"')";
+                    + ",?,?,?,?,'" + prod_origen + "')";
 
             File f1 = new File(r1);
             File f2 = new File(r2);
@@ -811,7 +812,7 @@ public class Conexion {
     }
 
     //guarda el formulario con 1 solo file
-    public boolean registro1File(String nombre, String r1, String dni, String prestamo, String cuotaI, String adq, String plazo, String tasaSol, String valorI, String moneda, String prod, String medio, String mes, String tipo, String vivienda, String motivo, String segmento, String cruce, String user, String coment,String prod_origen) {
+    public boolean registro1File(String nombre, String r1, String dni, String prestamo, String cuotaI, String adq, String plazo, String tasaSol, String valorI, String moneda, String prod, String medio, String mes, String tipo, String vivienda, String motivo, String segmento, String cruce, String user, String coment, String prod_origen) {
 
         boolean ok = false;
         int len1;
@@ -869,7 +870,7 @@ public class Conexion {
                     + ",getdate()"
                     + ",'" + coment + "'"
                     + ",1"
-                    + ",?,?,'"+prod_origen+"')";
+                    + ",?,?,'" + prod_origen + "')";
 
             File f1 = new File(r1);
 
@@ -899,7 +900,7 @@ public class Conexion {
     }
 
     //guarda el formulario sin ningun file añadido
-    public boolean registroSolicitud(String nombre, String dni, String prestamo, String cuotaI, String adq, String plazo, String tasaSol, String valorI, String moneda, String prod, String medio, String mes, String tipo, String vivienda, String motivo, String segmento, String cruce, String user, String coment,String prod_origen) {
+    public boolean registroSolicitud(String nombre, String dni, String prestamo, String cuotaI, String adq, String plazo, String tasaSol, String valorI, String moneda, String prod, String medio, String mes, String tipo, String vivienda, String motivo, String segmento, String cruce, String user, String coment, String prod_origen) {
 
         boolean ok = false;
         try {
@@ -952,7 +953,7 @@ public class Conexion {
                     + ",'" + user + "'"
                     + ",getdate()"
                     + ",'" + coment + "'"
-                    + ",1,'"+prod_origen+"')";
+                    + ",1,'" + prod_origen + "')";
 
             PreparedStatement ps = conn.prepareStatement(query);
 
@@ -972,7 +973,7 @@ public class Conexion {
      * solicitudes de FFVV *
      */
     //guarda solicitudes de FFVV con 2 files añadidos
-    public boolean registroSolicitud2FilesFFVV(String nombre, String r1, String r2, String dni, String prestamo, String cuotaI, String adq, String plazo, String tasaSol, String valorI, String moneda, String prod, String medio, String mes, String tipo, String vivienda, String motivo, String segmento, String cruce, String user, String coment,String prod_origen) {
+    public boolean registroSolicitud2FilesFFVV(String nombre, String r1, String r2, String dni, String prestamo, String cuotaI, String adq, String plazo, String tasaSol, String valorI, String moneda, String prod, String medio, String mes, String tipo, String vivienda, String motivo, String segmento, String cruce, String user, String coment, String prod_origen) {
 
         boolean ok = false;
         int len1;
@@ -1035,7 +1036,7 @@ public class Conexion {
                     + ",'" + coment + "'"
                     + ",1"
                     + ",?,?,?,?,'Sin Score'"
-                    + ",'"+prod_origen+"')";
+                    + ",'" + prod_origen + "')";
 
             File f1 = new File(r1);
             File f2 = new File(r2);
@@ -1070,7 +1071,7 @@ public class Conexion {
     }
 
     //guarda solicitudes de FFVV con 1 file añadido
-    public boolean registro1FileFFVV(String nombre, String r1, String dni, String prestamo, String cuotaI, String adq, String plazo, String tasaSol, String valorI, String moneda, String prod, String medio, String mes, String tipo, String vivienda, String motivo, String segmento, String cruce, String user, String coment,String prod_origen) {
+    public boolean registro1FileFFVV(String nombre, String r1, String dni, String prestamo, String cuotaI, String adq, String plazo, String tasaSol, String valorI, String moneda, String prod, String medio, String mes, String tipo, String vivienda, String motivo, String segmento, String cruce, String user, String coment, String prod_origen) {
 
         boolean ok = false;
         int len1;
@@ -1130,7 +1131,7 @@ public class Conexion {
                     + ",'" + coment + "'"
                     + ",1"
                     + ",?,?,'Sin Score'"
-                    + ",'"+prod_origen+"')";
+                    + ",'" + prod_origen + "')";
 
             File f1 = new File(r1);
             System.out.println(r1);
@@ -1163,7 +1164,7 @@ public class Conexion {
     }
 
     //guarda solicitudes de FFVV sin file añadido
-    public boolean registroSolicitudFFVV(String nombre, String dni, String prestamo, String cuotaI, String adq, String plazo, String tasaSol, String valorI, String moneda, String prod, String medio, String mes, String tipo, String vivienda, String motivo, String segmento, String cruce, String user, String coment,String prod_origen) {
+    public boolean registroSolicitudFFVV(String nombre, String dni, String prestamo, String cuotaI, String adq, String plazo, String tasaSol, String valorI, String moneda, String prod, String medio, String mes, String tipo, String vivienda, String motivo, String segmento, String cruce, String user, String coment, String prod_origen) {
 
         boolean ok = false;
 
@@ -1219,7 +1220,7 @@ public class Conexion {
                     + ",getdate()"
                     + ",'" + coment + "'"
                     + ",1,'Sin Score'"
-                    + ",'"+prod_origen+"')";
+                    + ",'" + prod_origen + "')";
 
             PreparedStatement ps = conn.prepareStatement(query);
 
@@ -1266,7 +1267,7 @@ public class Conexion {
 
     //retrieve de los archivos hacia la carpeta compartida
     public String getFilesData(String cod) {
-        int c=Integer.parseInt(cod);
+        int c = Integer.parseInt(cod);
         String path = "";
         boolean ok = false;
         boolean ok1 = false;
@@ -1332,7 +1333,7 @@ public class Conexion {
 
     public int contarFiles(String cod) {
         int cont = 0;
-        int c=Integer.parseInt(cod);
+        int c = Integer.parseInt(cod);
         String query, query1;
         Connection conn = getConnection();
         try {
@@ -1493,7 +1494,7 @@ public class Conexion {
             while (rs.next()) {
                 //System.out.println("entrando al rs");
                 if (rs.getString("Estado").equals("Rechazada")) {
-                    ok="ok";
+                    ok = "ok";
                 } else if ((dni.equals(rs.getString("Cod_doc")) && Float.parseFloat(monto) == Float.parseFloat(rs.getString("Prestamo"))
                         && Float.parseFloat(tasa) == rs.getFloat("Tasa_solicitada") && producto.equalsIgnoreCase(rs.getString("Producto_origen"))) == true) {
                     ok = "fail";

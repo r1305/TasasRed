@@ -32,13 +32,13 @@ public class ServletLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession ses = request.getSession(true);
-        
+
         request.setCharacterEncoding("UTF-8");
-        
+
         Conexion c = new Conexion();
         String user = request.getParameter("user");
-        Cookie cookie = new Cookie("user",user);
-        cookie.setMaxAge(60*60*24*7*360);
+        Cookie cookie = new Cookie("user", user);
+        cookie.setMaxAge(60 * 60 * 24 * 7 * 360);
         response.addCookie(cookie);
         String psw = request.getParameter("psw");
         String ok = c.getLogin(user.toUpperCase().toUpperCase(), psw);
@@ -58,18 +58,23 @@ public class ServletLogin extends HttpServlet {
         } else if (ok.equals("ffvv")) {
             c.guardarLogin(user);
             response.sendRedirect("formulario_ffvv.jsp");
-        }else if(ok.equals("abp")){
+        } else if (ok.equals("abp")) {
             c.guardarLogin(user);
             response.sendRedirect("principal_abp.jsp");
-        } else if (ok.equals("fail")) {
+        } else if (ok.equals("gt")) {
+            c.guardarLogin(user);
+            response.sendRedirect("formulario_gt.jsp");
+        } else if (ok.equals(
+                "fail")) {
             response.sendRedirect("index.jsp?cod=1");
-        } else if (ok.equals("no existe")) {
+        } else if (ok.equals(
+                "no existe")) {
             response.sendRedirect("index.jsp?cod=2");
         }
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

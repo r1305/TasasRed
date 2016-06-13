@@ -40,7 +40,7 @@
                 var y = screen.height / 2 - 450 / 2;
                 window.open('añadir.jsp?cod=' + id, '_blank', 'width = 300, height = 250,left=' + x + ',top=' + y);
             }
-            
+
             function actualizar() {
                 location.reload("formulario2.jsp");
                 location.reload("formulario3.jsp");
@@ -60,19 +60,35 @@
                            user="chip"  password="jedi1234"/>
         <!-- query para obtener la cantidad de solicitudes pendientes del usuario logeado-->
         <sql:query dataSource="${snapshot}" var="n">
-            select COUNT(*) as numero from Phoenix.Formulario where Estado='Pendiente' and  [Usuario]='<%=user%>'
+            select COUNT(*) as numero from Phoenix.Formulario f
+            join
+            Phoenix.Usuarios u 
+            on u.Registro=f.Usuario
+            where u.Cod_Tienda=(select Cod_Tienda from Phoenix.Usuarios where Registro='<%=user%>') and f.Estado='Pendiente'
         </sql:query>
         <!-- query para obtener la cantidad de solicitudes aceptadas del usuario logeado-->
         <sql:query dataSource="${snapshot}" var="a">
-            select COUNT(*) as numero from Phoenix.Formulario where Estado='Aceptada' and [Usuario]='<%=user%>' and dias>=0
+            select COUNT(*) as numero from Phoenix.Formulario f
+            join
+            Phoenix.Usuarios u 
+            on u.Registro=f.Usuario
+            where u.Cod_Tienda=(select Cod_Tienda from Phoenix.Usuarios where Registro='<%=user%>') and  Estado='Aceptada'and dias>=0
         </sql:query>
         <!-- query para obtener la cantidad de solicitudes rechazadas del usuario logeado-->
         <sql:query dataSource="${snapshot}" var="r">
-            select COUNT(*) as numero from Phoenix.Formulario where Estado='ContraOferta' and  [Usuario]='<%=user%>' and dias>=0
+            select COUNT(*) as numero from Phoenix.Formulario f
+            join
+            Phoenix.Usuarios u 
+            on u.Registro=f.Usuario
+            where u.Cod_Tienda=(select Cod_Tienda from Phoenix.Usuarios where Registro='<%=user%>') and  Estado='ContraOferta'and dias>=0
         </sql:query>
         <!-- query para obtener la cantidad de solicitudes vencidas del usuario logeado-->
         <sql:query dataSource="${snapshot}" var="v">
-            select COUNT(*) as numero from Phoenix.Formulario where dias<0 and  [Usuario]='<%=user%>' and (Estado='Aceptada' or Estado='ContraOferta' or Estado='Pendiente')
+            select COUNT(*) as numero from Phoenix.Formulario f
+            join
+            Phoenix.Usuarios u 
+            on u.Registro=f.Usuario
+            where u.Cod_Tienda=(select Cod_Tienda from Phoenix.Usuarios where Registro='<%=user%>') and dias<0 and (Estado='Aceptada' or Estado='ContraOferta' or Estado='Pendiente')
         </sql:query>
         <!--Query para mostrar las solicitudes pendientes con formato de monedas y fechas-->
         <sql:query dataSource="${snapshot}" var="result">
@@ -86,7 +102,11 @@
             when 'Soles' then 'S/. '+replace(convert(nvarchar(20),convert(money,round(Cuota_inicial,0,0)),1),'.00','')
             end As cuotaI,
             convert(nvarchar(255),DAY(fecha_solicitud))+'-'+convert(nvarchar(255),MONTH(fecha_solicitud))+'-'+convert(nvarchar(255),YEAR(fecha_solicitud)) as solicitud
-            FROM [BD_CHIP].[Phoenix].[Formulario] where  [Usuario]='<%=user%>' and Estado='Pendiente' order by 1
+            from Phoenix.Formulario f
+            join
+            Phoenix.Usuarios u 
+            on u.Registro=f.Usuario
+            where u.Cod_Tienda=(select Cod_Tienda from Phoenix.Usuarios where Registro='<%=user%>') and f.Estado='Pendiente' order by 1
         </sql:query>        
         <!--Logo y banner según IBK-->
         <%Conexion c = new Conexion();%>
@@ -126,11 +146,11 @@
                 <center>
                     <table width="101%" border="1">
                         <tr style="background-color: #00A94E;height: 50px">
-                            <th style="background-color:#009042 ;text-align: center;vertical-align:middle;width: 20.2%"><a href="formulario.jsp" onclick="actualizar()" style="color: #FFFFFF"><b>Enviadas (<c:forEach var="b" items="${n.rows}">${b.numero}</c:forEach>)</b></a></th>
-                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario2.jsp" onclick="actualizar()" style="color: #FFFFFF"><b>Aceptadas (<c:forEach var="b" items="${a.rows}">${b.numero}</c:forEach>)</b></a></th>
-                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario3.jsp" onclick="actualizar()" style="color: #FFFFFF"><b>Contra Ofertas (<c:forEach var="b" items="${r.rows}">${b.numero}</c:forEach>)</b></a></th>
-                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario4.jsp" onclick="actualizar()" style="color: #FFFFFF"><b>Vencidas (<c:forEach var="b" items="${v.rows}">${b.numero}</c:forEach>)</b></a></th>
-                                <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario5.jsp" onclick="actualizar()" style="color: #FFFFFF"><b>Solicitud</b></a></th>                               
+                            <th style="background-color:#009042 ;text-align: center;vertical-align:middle;width: 20.2%"><a href="formulario_gt.jsp" onclick="actualizar()" style="color: #FFFFFF"><b>Enviadas (<c:forEach var="b" items="${n.rows}">${b.numero}</c:forEach>)</b></a></th>
+                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario2_gt.jsp" onclick="actualizar()" style="color: #FFFFFF"><b>Aceptadas (<c:forEach var="b" items="${a.rows}">${b.numero}</c:forEach>)</b></a></th>
+                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario3_gt.jsp" onclick="actualizar()" style="color: #FFFFFF"><b>Contra Ofertas (<c:forEach var="b" items="${r.rows}">${b.numero}</c:forEach>)</b></a></th>
+                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario4_gt.jsp" onclick="actualizar()" style="color: #FFFFFF"><b>Vencidas (<c:forEach var="b" items="${v.rows}">${b.numero}</c:forEach>)</b></a></th>
+                                <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario5_gt.jsp" onclick="actualizar()" style="color: #FFFFFF"><b>Solicitud</b></a></th>                               
                             </tr>
                         </table>
                     </center>

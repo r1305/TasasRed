@@ -39,6 +39,14 @@
                 var y = screen.height / 2 - 450 / 2;
                 window.open('reenvio.jsp?cod=' + id, '_blank', 'width = 400, height = 350,left=' + x + ',top=' + y);
             }
+            
+            function actualizar() {
+                location.reload("formulario.jsp");
+                location.reload("formulario3.jsp");
+                location.reload("formulario4.jsp");
+                location.reload("formulario5.jsp");
+                location.reload("formulario2.jsp");
+            }
 
         </script>
     </head>
@@ -109,14 +117,19 @@
             <br>
             <!--Tabs de bandeja de solicitudes-->
             <div class="container" style="margin-top: -20px;max-height: 600px;width: 100%">
+                <div class="input-group">
+                    <span class="input-group-addon" onclick="actualizar();" style="background-color: #cccccc;color: #000000;font-style: inherit;float: left">
+                        Actualizar
+                    </span>
+                </div>
                 <center>
                     <table width="101%" border="1">
                         <tr style="background-color: #00A94E;height: 50px">
-                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a href="formulario.jsp" style="color: #FFFFFF"><b>Enviadas (<c:forEach var="b" items="${n.rows}">${b.numero}</c:forEach>)</b></a></th>
-                            <th style=";background-color:#009042 ;text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario2.jsp" style="color: #FFFFFF"><b>Aceptadas (<c:forEach var="b" items="${a.rows}">${b.numero}</c:forEach>)</b></a></th>
-                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario3.jsp" style="color: #FFFFFF"><b>Contra Ofertas (<c:forEach var="b" items="${r.rows}">${b.numero}</c:forEach>)</b></a></th>
-                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario4.jsp" style="color: #FFFFFF"><b>Vencidas (<c:forEach var="b" items="${v.rows}">${b.numero}</c:forEach>)</b></a></th>
-                                <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario5.jsp" style="color: #FFFFFF"><b>Solicitud</b></a></th>                               
+                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a href="formulario.jsp" onclick="actualizar()" style="color: #FFFFFF"><b>Enviadas (<c:forEach var="b" items="${n.rows}">${b.numero}</c:forEach>)</b></a></th>
+                            <th style=";background-color:#009042 ;text-align: center;vertical-align:middle;width: 20.2%"><a  href="formulario2.jsp" onclick="actualizar()" style="color: #FFFFFF"><b>Aceptadas (<c:forEach var="b" items="${a.rows}">${b.numero}</c:forEach>)</b></a></th>
+                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  onclick="actualizar()" href="formulario3.jsp" style="color: #FFFFFF"><b>Contra Ofertas (<c:forEach var="b" items="${r.rows}">${b.numero}</c:forEach>)</b></a></th>
+                            <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  onclick="actualizar()" href="formulario4.jsp" style="color: #FFFFFF"><b>Vencidas (<c:forEach var="b" items="${v.rows}">${b.numero}</c:forEach>)</b></a></th>
+                                <th style="text-align: center;vertical-align:middle;width: 20.2%"><a  onclick="actualizar()" href="formulario5.jsp" style="color: #FFFFFF"><b>Solicitud</b></a></th>                               
                             </tr>
                         </table>
                     </center>

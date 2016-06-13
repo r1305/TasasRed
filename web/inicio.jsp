@@ -336,7 +336,7 @@
 
             </c:choose>
             <br>
-            <button type="button" onclick="descargar()">Descargar Archivos (<%=c.contarFiles(Integer.parseInt(request.getParameter("id")))%>)</button>
+            <button type="button" onclick="descargar(${param.id})">Descargar Archivos (<%=c.contarFiles(request.getParameter("id"))%>)</button>
             <input type="text" value="${param.id}" id="cod" hidden="">
             <br><a href="\\hipotecario\Solicitudes\solicitud${param.id}">Ver Archivos</a>
         </center>

@@ -137,11 +137,9 @@ function rechazar_abp() {
 }
 
 //descarga los archivos adjuntos en la ruta especifica
-function descargar() {
-    var cod = document.getElementById("cod").value;
+function descargar(id) {
     $.post('ServletDescargas', {
-        cod: cod
-
+        cod: id
     }, function (responseText) {
         if (responseText === "no hay nada") {
             alert("¡No hay archivos adjuntos!");
